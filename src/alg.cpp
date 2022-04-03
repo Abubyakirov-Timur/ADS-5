@@ -30,7 +30,7 @@ bool search(std::string s, char c) {
 }
 
 std::string infx2pstfx(std::string inf) {
-   TStack<char, 100> stack;
+  TStack<char, 100> stack;
   std::stack<char> Stack;
   std::string number = "0123456789";
   std::string operation = "()+-*/";
@@ -71,11 +71,10 @@ std::string infx2pstfx(std::string inf) {
     }
   }
   return result;
-  return std::string("");
 }
 
 int eval(std::string pref) {
-   int sum = 0;
+    int sum = 0;
   std::stack<int> Stack;
   TStack<int, 100> stack;
   std::string number = "0123456789";
@@ -105,5 +104,4 @@ int eval(std::string pref) {
   }
   sum = Stack.top();
   return sum;
-  return 0;
 }

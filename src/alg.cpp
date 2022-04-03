@@ -32,7 +32,7 @@ bool search(std::string s, char c) {
 }
 
 std::string infx2pstfx(std::string inf) {
- TStack<char, 100> stack;
+  TStack<char, 100> stack;
   std::stack<char> Stack;
   std::string number = "0123456789";
   std::string operation = "()+-*/";

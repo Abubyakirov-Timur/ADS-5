@@ -32,7 +32,7 @@ bool search(std::string s, char c) {
 }
 
 std::string infx2pstfx(std::string inf) {
-  TStack<char, 100> stack;
+ TStack<char, 100> stack;
   std::stack<char> Stack;
   std::string number = "0123456789";
   std::string operation = "()+-*/";
@@ -76,14 +76,14 @@ std::string infx2pstfx(std::string inf) {
       Stack.pop();
     }
   }
-  if (result[result.lenght() - 1] == ' ') {
-    result.erase(result.lenght() - 1);
+  if (result[result.length() - 1] == ' ') {
+    result.erase(result.length() - 1);
   }
   return result;
 }
 
 int eval(std::string pref) {
-   int sum = 0;
+  int sum = 0;
   std::stack<int> Stack;
   TStack<int, 100> stack;
   std::string number = "0123456789";

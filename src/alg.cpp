@@ -3,6 +3,7 @@
 #include <map>
 #include <stack>
 #include "tstack.h"
+
 int prior(char c) {
   switch (c) {
     case '(':
@@ -20,6 +21,7 @@ int prior(char c) {
   }
   return 0;
 }
+
 bool search(std::string s, char c) {
   for (int i = 0; i < s.length(); ++i) {
     if (s[i] == c) {
@@ -28,6 +30,7 @@ bool search(std::string s, char c) {
   }
   return false;
 }
+
 std::string infx2pstfx(std::string inf) {
   TStack<char, 100> stack;
   std::stack<char> Stack;
@@ -73,10 +76,14 @@ std::string infx2pstfx(std::string inf) {
       Stack.pop();
     }
   }
+  if (result[result.lenght() - 1] == ' ') {
+    result.erase(result.lenght() - 1);
+  }
   return result;
 }
+
 int eval(std::string pref) {
-  int sum = 0;
+   int sum = 0;
   std::stack<int> Stack;
   TStack<int, 100> stack;
   std::string number = "0123456789";

@@ -1,8 +1,8 @@
 // Copyright 2021 NNTU-CS
 #include <string>
 #include <map>
+#include <stack>
 #include "tstack.h"
-
 int prior(char c) {
   switch (c) {
     case '(':
@@ -28,7 +28,6 @@ bool search(std::string s, char c) {
   }
   return false;
 }
-
 std::string infx2pstfx(std::string inf) {
   TStack<char, 100> stack;
   std::stack<char> Stack;
@@ -44,11 +43,15 @@ std::string infx2pstfx(std::string inf) {
         Stack.push(inf[i]);
       } else if (Stack.empty()) {
         Stack.push(inf[i]);
-      } else if (prior(inf[i]) > prior(Stack.get())) {
+      } else if (prior(inf[i]) > prior(Stack.top())) {
         Stack.push(inf[i]);
       } else if (inf[i] == ')') {
         while (Stack.top() != '(') {
-	@@ -58,7 +58,7 @@ std::string infx2pstfx(std::string inf) {
+          result += Stack.top();
+          result += ' ';
+          Stack.pop();
+        }
+        if (Stack.top() == '(') {
           Stack.pop();
         }
       } else {
@@ -72,9 +75,8 @@ std::string infx2pstfx(std::string inf) {
   }
   return result;
 }
-
 int eval(std::string pref) {
-    int sum = 0;
+  int sum = 0;
   std::stack<int> Stack;
   TStack<int, 100> stack;
   std::string number = "0123456789";
